@@ -1,0 +1,218 @@
+/* General Page Layout */
+.cart-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Cart Section */
+.cart-section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-item-details h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+}
+
+.cart-quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cart-quantity-controls label {
+  margin-right: 8px;
+}
+
+.cart-quantity-controls input {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.cart-remove-button {
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cart-remove-button:hover {
+  background: #ff0000;
+}
+
+/* Total Price and Discount */
+.cart-total {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.cart-total p {
+  margin: 8px 0;
+}
+
+.cart-checkout-button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cart-checkout-button:hover {
+  background: #388e3c;
+}
+
+/* Discount Code Input */
+.cart-total input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.cart-total button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cart-total button:hover {
+  background: #0056b3;
+}
+
+/* Add to Cart Section */
+.cart-add-to-cart-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.cart-add-to-cart-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cart-add-to-cart-button:hover {
+  background: #0056b3;
+}
+
+/* Order History Section */
+.cart-orders-history-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-history-item {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-history-item:last-child {
+  border-bottom: none;
+}
+
+.cart-clear-history-button {
+  display: block;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px auto 0;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cart-clear-history-button:hover {
+  background: #ff0000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .cart-item-details {
+    margin-left: 0;
+  }
+
+  .cart-total {
+    text-align: left;
+  }
+}

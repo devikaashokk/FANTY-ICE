@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.main-content {
+  min-height: calc(100vh - 150px); /* Ensures main content fills the page between Header and Footer */
+  padding: 20px;
+  background-color: #fff;
+}
+
+header, footer {
+  background-color: #242424;
+  color: #fff;
+}
+
+header {
+  padding: 10px 20px;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+}

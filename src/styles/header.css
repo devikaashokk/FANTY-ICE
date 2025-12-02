@@ -1,0 +1,101 @@
+/* Header */
+.header {
+  background-color: hsla(0, 23%, 97%, 0.966); /* Clean white background */
+  color: #131212;
+  padding: 15px 30px; /* Balanced padding for a professional look */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow for depth */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure header is always on top */
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8em; /* Slightly larger for prominence */
+  font-weight: bold;
+  color: #000; /* Black text for contrast */
+  text-transform: uppercase; /* Make the logo text uppercase for emphasis */
+  letter-spacing: 1px; /* Add subtle spacing for elegance */
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Navigation List */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 25px; /* Space between navigation items */
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Center align items vertically */
+  justify-content: flex-end; /* Align items to the right */
+  flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* Navigation Item (li) */
+.nav-list li {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation Link */
+.nav-link, .logout-button {
+  color: #555; /* Neutral color for the links */
+  text-decoration: none;
+  border-radius: 25px; /* Subtle pill shape for buttons */
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1em;
+  font-weight: 500; /* Slightly bolder for readability */
+  white-space: nowrap;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-link:hover, .logout-button:hover {
+  background-color: #f3f3f3; /* Soft hover effect */
+  color: #000; /* Darker text for emphasis */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Add hover depth */
+  text-decoration: none;
+}
+
+.nav-link:active, .logout-button:active {
+  background-color: #ddd; /* Darker shade on click */
+  box-shadow: none; /* Remove shadow on click */
+}
+
+/* Specific styles for Login/Register button */
+.nav-list .nav-link {
+  display: flex;
+  align-items: center; /* Vertically align the buttons */
+  margin-top: -5px; /* Move Login/Register buttons slightly up */
+}
+
+.nav-list .nav-link:last-child {
+  margin-right: 0; /* Ensure there's no extra margin on the last item */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px; /* Adjust padding for smaller screens */
+    flex-direction: column; /* Stack logo and nav items vertically */
+    align-items: flex-start; /* Align to the left */
+  }
+
+  .nav-list {
+    gap: 15px; /* Reduce gap for smaller screens */
+    flex-wrap: wrap; /* Allow items to wrap if necessary */
+    justify-content: flex-start; /* Align items to the left on mobile */
+  }
+
+  .nav-link, .logout-button {
+    padding: 8px 15px; /* Adjust link padding */
+    font-size: 0.9em; /* Slightly smaller text for smaller screens */
+  }
+}

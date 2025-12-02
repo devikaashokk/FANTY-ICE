@@ -1,0 +1,210 @@
+z
+/* Profile Page Background */
+.profile-page {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keep the background fixed during scrolling */
+  background-repeat: no-repeat; /* Prevent repeating */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+  font-family: 'Poppins', sans-serif; /* Modern typography */
+}
+
+/* Profile Header */
+.profile-header {
+  text-align: center; /* Center the header text */
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.profile-header h1 {
+  font-size: 4rem; /* Prominent heading size */
+  font-weight: bold;
+  margin: 0;
+  color: #312b2b;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+}
+
+/* Profile Card */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  color: #000; /* Set profile text color to black */
+  padding: 90px; /* Spacious padding */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Depth with shadow */
+  max-width: 600px; /* Restrict card width */
+  width: 100%;
+  animation: fadeInRight 1s ease-in-out; /* Smooth entrance animation */
+  text-align: center; /* Center the card content */
+}
+
+/* Profile Image */
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 5px solid #b6b9be; /* Accent border */
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-image img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Profile Info */
+.profile-info {
+  width: 100%;
+}
+
+.profile-info h2 {
+  font-size: 2.5rem; /* Prominent name size */
+  text-align: center;
+  margin-bottom: 15px; /* Space between elements */
+  font-weight: bold;
+  color: #1a1b1b; /* Primary color */
+}
+
+.profile-info p {
+  font-size: 1.3rem;
+  margin: 8px 0;
+  text-align: center;
+  color: #000; /* Set text color to black */
+}
+
+/* Editable Fields */
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%; /* Ensure fields span the full card width */
+}
+
+.profile-field label {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.profile-field input {
+  padding: 12px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.profile-field input:focus {
+  border-color: #2575fc;
+}
+
+/* Buttons */
+/* Buttons */
+.edit-button {
+  background-color: #2575fc; /* Edit state color */
+  color: #fff;
+  border: none;
+  padding: 15px 25px;
+  margin-top: 25px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.edit-button:hover {
+  background-color: #1b5fcf; /* Hover color for edit */
+  transform: translateY(-2px); /* Button lift effect */
+}
+
+.save-button {
+  background-color: #28a745; /* Save state color */
+  color: #fff;
+  border: none;
+  padding: 15px 25px;
+  margin-top: 25px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.save-button:hover {
+  background-color: #218838; /* Hover color for save */
+  transform: translateY(-2px); /* Button lift effect */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 20px; /* Reduce padding for smaller screens */
+    align-items: center; /* Center-align content on smaller screens */
+  }
+
+  .profile-header {
+    text-align: center; /* Center header on smaller screens */
+  }
+
+  .profile-header h1 {
+    font-size: 3rem; /* Adjust heading size for smaller screens */
+  }
+
+  .profile-card {
+    padding: 30px; /* Compact padding */
+  }
+
+  .profile-info h2 {
+    font-size: 2rem;
+  }
+
+  .profile-info p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animation for Profile Card Entrance */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Footer Styles for Profile Page */
+.profile-page-footer {
+  width: 100%; /* Full width */
+  background-color: #2575fc; /* Background color */
+  color: #fff; /* Text color */
+  text-align: center; /* Center-align text */
+  padding: 20px 0; /* Padding */
+  position: fixed; /* Fixed at the bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 1000; /* Ensure the footer is on top */
+}
+
+/* Responsive Design for Profile Page Footer */
+@media (max-width: 768px) {
+  .profile-page-footer {
+    padding: 15px 0; /* Adjust padding for smaller screens */
+  }
+}

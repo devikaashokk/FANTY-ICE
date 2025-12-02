@@ -1,0 +1,99 @@
+/* Home Page Styles */
+.home {
+  font-family: Arial, sans-serif;
+}
+
+.hero-section {
+  position: relative;
+  text-align: center;
+  height: 110vh; /* Ensure the hero section takes the full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dacdcd;
+  overflow: hidden; /* Prevent overflow */
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: pop-up 2s ease-in-out; /* Apply pop-up animation */
+}
+
+@keyframes pop-up {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.pop-up-text {
+  font-size: 3.8em;
+  color: rgb(240, 245, 242);
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+}
+
+.view-products-button {
+  background-color: #4a90e2; /* Modern blue color */
+  color: #fff; /* White text color */
+  padding: 10px 16px; /* Reduced padding for a more compact button */
+  font-size: 14px; /* Reduced font size for a more compact look */
+  width: 300px; /* Specify the width to make the button shorter */
+  border: none;
+  border-radius: 5px; /* Increased rounding for more pronounced corners */
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
+}
+
+.view-products-button:hover {
+  background-color: #357ABD; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly scale up on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+}
+
+.hero-image {
+  width: 100%; /* Ensure the image fits the entire container width */
+  height: 100%; /* Ensure the image fits the entire container height */
+  object-fit: cover; /* Ensure the image covers the area without stretching */
+  object-position: center; /* Center the image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out; /* Add transition for zoom effect */
+}
+
+.hero-image:hover {
+  transform: scale(1.1); /* Zoom in on hover */
+}
+
+/* Header Styles */
+.nav-list li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 15px; /* Increased padding for better alignment */
+  transition: background-color 0.3s, color 0.3s; /* Add transition effect */
+}
+
+.nav-link:hover {
+  background-color: #ddd; /* Slightly darker shade on hover */
+  color: #000;
+}

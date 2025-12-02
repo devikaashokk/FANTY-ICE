@@ -1,0 +1,218 @@
+/* Pop-Up Animation Keyframes */
+@keyframes pop-up {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Page Container */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #eef2f6; /* Subtle blue-gray for a professional feel */
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Hero Section and Pop-Up Effect */
+.hero-section {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3; /* Light gray for fallback */
+  overflow: hidden;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: pop-up 1.5s ease-in-out; /* Smooth pop-up animation */
+}
+
+.pop-up-text {
+  font-size: 4em;
+  color: #3b3b3b; /* Neutral dark gray for better readability */
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.view-products-button {
+  background-color: #00796b; /* Professional green tone */
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px; /* Rounded button for modern design */
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.view-products-button:hover {
+  background-color: #004d40; /* Darker green on hover */
+  transform: scale(1.1); /* Subtle zoom effect */
+}
+
+.hero-image {
+  width: 100vw; /* Full screen width */
+  height: 100vh; /* Full screen height */
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: brightness(85%); /* Slight dim effect for text visibility */
+}
+
+/* Products Section */
+.products-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.products-section h2 {
+  margin-bottom: 30px;
+  color: #6a1b9a; /* Professional purple */
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-item {
+  text-align: center;
+  width: calc(33.333% - 40px); /* Fit 3 items per row */
+  max-width: 300px; /* Limit width for consistency */
+  flex: 0 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-item:hover {
+  transform: translateY(-5px); /* Subtle lift effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-item img {
+  width: 100%;
+  border-bottom: 3px solid #6a1b9a; /* Add accent color */
+}
+
+.view-all-button {
+  background-color: #00796b;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.view-all-button:hover {
+  background-color: #004d40;
+  transform: scale(1.1);
+}
+
+/* Footer */
+.footer {
+  background-color: #212121; /* Rich dark tone */
+  color: #f5f5f5; /* Light gray text */
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  font-size: 1em;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.footer a {
+  color: #6a1b9a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: #4a148c; /* Darker purple for hover */
+  text-decoration: underline;
+}
+
+/* Header */
+.header {
+  background-color: #ffffff;
+  color: #757575;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #6a1b9a; /* Professional purple for branding */
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #f3f3f3;
+  color: #000;
+}
