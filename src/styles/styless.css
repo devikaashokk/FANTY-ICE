@@ -1,204 +1,80 @@
-/* Pop-Up Animation Keyframes */
-@keyframes pop-up {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+:root{
+  --header-height: 72px;
+  --max-width: 1200px;
+  --accent-purple: #6a1b9a;
+  --accent-green: #00796b;
+  --accent-green-dark: #004d40;
+  --bg: #eef2f6;
+  --surface: #f9f9f9;
+  --text: #3b3b3b;
+  --radius: 10px;
+  --gap: 20px;
+  --transition: 0.28s ease;
 }
 
-/* Page Container */
+/* ============================
+   Reduced motion preference
+   ============================ */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0s !important; animation-delay: 0s !important; transition: none !important; }
+}
+
+/* ============================
+   Global page container
+   ============================ */
 .page-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Full viewport height */
-  background-color: #eef2f6; /* Subtle blue-gray for a professional feel */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: var(--bg);
   text-align: center;
-  padding: 20px;
+  padding: 0;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
 }
 
-/* Hero Section and Pop-Up Effect */
-.hero-section {
-  position: relative;
-  height: 100vh; /* Full viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f3f3f3; /* Light gray for fallback */
-  overflow: hidden;
-}
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  animation: pop-up 1.5s ease-in-out; /* Smooth pop-up animation */
-}
-
-.pop-up-text {
-  font-size: 4em;
-  color: #3b3b3b; /* Neutral dark gray for better readability */
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.view-products-button {
-  background-color: #00796b; /* Professional green tone */
-  color: #fff;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px; /* Rounded button for modern design */
-  cursor: pointer;
-  margin-top: 20px;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.view-products-button:hover {
-  background-color: #004d40; /* Darker green on hover */
-  transform: scale(1.1); /* Subtle zoom effect */
-}
-
-.hero-image {
-  width: 100vw; /* Full screen width */
-  height: 100vh; /* Full screen height */
-  object-fit: cover;
-  object-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  filter: brightness(85%); /* Slight dim effect for text visibility */
-}
-
-/* Products Section */
-.products-section {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;
-  transition: transform 0.5s, opacity 0.5s;
-}
-
-.products-section h2 {
-  margin-bottom: 30px;
-  color: #6a1b9a; /* Professional purple */
-  font-family: 'Arial', sans-serif;
-  font-size: 2.5em;
-  font-weight: bold;
-}
-
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.product-item {
-  text-align: center;
-  width: calc(33.333% - 40px); /* Fit 3 items per row */
-  max-width: 300px; /* Limit width for consistency */
-  flex: 0 0 auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-item:hover {
-  transform: translateY(-5px); /* Subtle lift effect */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-.product-item img {
-  width: 100%;
-  border-bottom: 3px solid #6a1b9a; /* Add accent color */
-}
-
-.view-all-button {
-  background-color: #00796b;
-  color: #fff;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-top: 30px;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.view-all-button:hover {
-  background-color: #004d40;
-  transform: scale(1.1);
-}
-
-/* Footer */
-.footer {
-  background-color: #212121; /* Rich dark tone */
-  color: #f5f5f5; /* Light gray text */
-  text-align: center;
-  padding: 30px 20px;
-  position: relative;
-  width: 100%;
-  margin-top: auto;
-  font-size: 1em;
-  font-family: 'Arial', sans-serif;
-}
-
-.footer p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
-
-.footer a {
-  color: #6a1b9a;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.footer a:hover {
-  color: #4a148c; /* Darker purple for hover */
-  text-decoration: underline;
-}
-
-/* Header */
+/* ============================
+   Header (fixed) — leaves space for content
+   ============================ */
 .header {
+  height: var(--header-height);
   background-color: #ffffff;
   color: #757575;
-  padding: 15px 30px;
+  padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
 }
 
+/* make page content appear below fixed header */
+.page-content {
+  padding-top: calc(var(--header-height) + 24px);
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* header branding + nav */
 .logo {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #6a1b9a; /* Professional purple for branding */
+  font-size: clamp(1.1rem, 1.6rem, 1.8rem);
+  font-weight: 700;
+  color: var(--accent-purple);
 }
 
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 16px;
   margin: 0;
   padding: 0;
   align-items: center;
@@ -207,12 +83,206 @@
 .nav-link {
   color: #333;
   text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 .nav-link:hover {
   background-color: #f3f3f3;
   color: #000;
+}
+
+/* ============================
+   Hero Section & Pop-up
+   ============================ */
+@keyframes pop-up {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Hero should use min-height so content isn't cut off on small screens */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(80vh - var(--header-height));
+  width: 100%;
+  overflow: hidden;
+  background-color: #f3f3f3;
+}
+
+/* hero image sits behind content but is constrained */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: brightness(0.82);
+  transform-origin: center;
+}
+
+/* content centered and responsive; avoids absolute centering to be more flexible */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: min(1100px, 92%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  animation: pop-up 900ms ease-out;
+}
+
+.pop-up-text {
+  font-size: clamp(1.8rem, 4vw, 3.6rem); /* responsive scaling */
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Buttons */
+.view-products-button,
+.view-all-button {
+  background-color: var(--accent-green);
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.16s ease, background-color var(--transition);
+  will-change: transform;
+}
+
+.view-products-button:hover,
+.view-all-button:hover {
+  background-color: var(--accent-green-dark);
+  transform: translateY(-3px);
+}
+
+/* ============================
+   Products Section
+   ============================ */
+.products-section {
+  text-align: center;
+  padding: 48px 20px;
+  background-color: var(--surface);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.products-section h2 {
+  margin-bottom: 30px;
+  color: var(--accent-purple);
+  font-family: 'Arial', sans-serif;
+  font-size: clamp(1.45rem, 2.5vw, 2.5rem);
+  font-weight: 800;
+}
+
+/* responsive product grid: 3 / 2 / 1 columns */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  justify-items: center;
+  align-items: start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.product-item {
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.product-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 4px solid var(--accent-purple);
+}
+
+/* small product card body */
+.product-body {
+  padding: 14px;
+  text-align: left;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 auto;
+}
+
+/* ============================
+   Footer
+   ============================ */
+.footer {
+  background-color: #212121;
+  color: #f5f5f5;
+  text-align: center;
+  padding: 30px 20px;
+  width: 100%;
+  margin-top: auto;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+}
+
+/* footer links */
+.footer a {
+  color: var(--accent-purple);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer a:hover { color: #4a148c; text-decoration: underline; }
+
+/* ============================
+   Responsive breakpoints
+   ============================ */
+@media (max-width: 1024px) {
+  .product-list { grid-template-columns: repeat(2, 1fr); }
+  .product-item img { height: 180px; }
+  .hero-content { padding: 20px; }
+}
+
+@media (max-width: 700px) {
+  .product-list { grid-template-columns: 1fr; padding: 6px; }
+  .product-item img { height: 160px; }
+  .hero-section { min-height: 56vh; }
+  .hero-content { padding: 16px; gap: 12px; }
+  .pop-up-text { font-size: clamp(1.4rem, 6vw, 2.4rem); text-align: center; }
+  .page-content { padding-top: calc(var(--header-height) + 18px); }
+  .nav-list { gap: 12px; }
+}
+
+/* small phones */
+@media (max-width: 420px) {
+  .hero-section { min-height: 48vh; }
+  .product-item img { height: 140px; }
+  .view-products-button, .view-all-button { padding: 10px 18px; font-size: 0.95rem; }
+  .logo { font-size: 1.1rem; }
 }

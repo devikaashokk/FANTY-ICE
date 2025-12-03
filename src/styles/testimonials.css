@@ -1,40 +1,317 @@
+/* Updated Testimonials Styles */
 .testimonials-section {
-  padding: 40px 20px;
-  background-color: #f8f8f8;
-  text-align: center;
-  margin-bottom: 80px; /* Add margin to prevent overlap with the footer */
+  padding: 6rem 5%;
+  background: linear-gradient(to bottom, #FFF5F7, #ffffff);
+  position: relative;
+}
+
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #FF6B9D, #FFA07A, #FFD700);
 }
 
 .testimonials-section h2 {
-  margin-bottom: 30px;
-  font-size: 2em;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: #333;
+  margin-bottom: 4rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.testimonials-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, #FF6B9D, #FFA07A);
+  border-radius: 3px;
 }
 
 .testimonials {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .testimonial {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  flex: 1 1 calc(33.333% - 40px); /* Adjust width to fit within screen */
-  max-width: 100%; /* Ensure it doesn't exceed parent width */
-  box-sizing: border-box;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.testimonial::before {
+  content: '"';
+  font-size: 6rem;
+  color: #FF6B9D;
+  opacity: 0.15;
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.testimonial:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(255,107,157,0.25);
+  border-color: rgba(255,107,157,0.3);
 }
 
 .testimonial p {
-  font-size: 1em;
-  color: #1a1919;
+  font-size: 1.15rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial h4 {
-  margin-top: 15px;
-  font-size: 1.2em;
-  color: #1c1c1d;
+  font-size: 1.1rem;
+  color: #FF6B9D;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Ice Cream Quote Section Styles */
+.ice-cream-quote {
+  width: 100%;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #FFF5F7 0%, #ffffff 50%, #FFF5F7 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ice-cream-quote::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,107,157,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.side-image {
+  width: 25%;
+  max-width: 350px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  transition: all 0.4s ease;
+}
+
+.side-image:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 20px 50px rgba(255,107,157,0.3);
+}
+
+.about-us-container {
+  flex: 1;
+  max-width: 700px;
+  margin: 0 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* About Us Section */
+.about-us-section {
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  position: relative;
+}
+
+.about-us-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,245,247,0.9) 100%);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.about-us-text {
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-us-text h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #FF6B9D;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.about-us-text p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.read-more-link {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #FF6B9D, #FFA07A);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255,107,157,0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.read-more-link:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(255,107,157,0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ice-cream-quote {
+    padding: 4rem 4%;
+  }
+  
+  .side-image {
+    width: 28%;
+    max-width: 280px;
+  }
+  
+  .about-us-container {
+    margin: 0 2rem;
+  }
+  
+  .testimonials-section {
+    padding: 5rem 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ice-cream-quote {
+    flex-direction: column;
+    min-height: auto;
+    padding: 3rem 5%;
+  }
+  
+  .side-image {
+    width: 60%;
+    max-width: 300px;
+    margin: 1.5rem 0;
+  }
+  
+  .about-us-container {
+    margin: 1.5rem 0;
+    max-width: 100%;
+  }
+  
+  .about-us-text {
+    padding: 1.5rem;
+  }
+  
+  .testimonials-section {
+    padding: 4rem 5%;
+  }
+  
+  .testimonials {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .testimonial {
+    padding: 2rem;
+  }
+  
+  .testimonial::before {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ice-cream-quote {
+    padding: 2rem 4%;
+  }
+  
+  .side-image {
+    width: 80%;
+    max-width: 250px;
+  }
+  
+  .about-us-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .about-us-text p {
+    font-size: 1rem;
+  }
+  
+  .read-more-link {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .testimonials-section {
+    padding: 3rem 4%;
+  }
+  
+  .testimonials-section h2 {
+    margin-bottom: 2.5rem;
+  }
+  
+  .testimonial p {
+    font-size: 1rem;
+  }
+}
+
+/* Animation Enhancements */
+@media (prefers-reduced-motion: no-preference) {
+  .testimonial,
+  .side-image,
+  .read-more-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .ice-cream-quote::before,
+  .about-us-section::before {
+    display: none;
+  }
+  
+  .read-more-link {
+    display: none;
+  }
 }

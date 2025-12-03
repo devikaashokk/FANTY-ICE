@@ -1,108 +1,138 @@
 /* General styles for the Admin Page */
 .admin-page {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    color: #343a40;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.admin-page h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+/* Section Styling */
+.admin-section {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.admin-section h2 {
+  font-size: 1.8rem;
+  color: #212529;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #adb5bd;
+  padding-bottom: 5px;
+}
+
+/* List Styling */
+.admin-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 1rem;
+}
+
+.admin-list li:last-child {
+  border-bottom: none;
+}
+
+.admin-list li span {
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Button Styles */
+.admin-action-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.admin-action-button:hover {
+  background-color: #0056b3;
+}
+
+.admin-action-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* ============================
+   Responsive Design
+   ============================ */
+@media (max-width: 992px) {
+  .admin-page {
+    padding: 18px;
   }
-  
-  /* Header Section */
+
   .admin-page h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    color: #495057;
-    margin-bottom: 20px;
+    font-size: 2rem;
   }
-  
-  /* Section Styling */
-  .admin-section {
-    background: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-  
+
   .admin-section h2 {
-    font-size: 1.8rem;
-    color: #212529;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #adb5bd;
-    padding-bottom: 5px;
+    font-size: 1.6rem;
   }
-  
-  /* List Styling */
-  .admin-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+}
+
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 15px;
   }
-  
+
+  .admin-section {
+    padding: 15px;
+  }
+
   .admin-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    border-bottom: 1px solid #e9ecef;
-    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .admin-list li:last-child {
-    border-bottom: none;
-  }
-  
+
   .admin-list li span {
-    font-weight: bold;
-    color: #495057;
+    margin-bottom: 5px;
   }
-  
-  /* Button Styles */
+
   .admin-action-button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .admin-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .admin-list li {
     font-size: 0.9rem;
-    transition: background-color 0.3s ease;
   }
-  
-  .admin-action-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .admin-action-button:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .admin-page {
-      padding: 15px;
-    }
-  
-    .admin-section {
-      padding: 15px;
-    }
-  
-    .admin-list li {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .admin-list li span {
-      margin-bottom: 5px;
-    }
-  
-    .admin-action-button {
-      width: 100%;
-    }
-  }
-  
+}

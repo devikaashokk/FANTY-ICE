@@ -1,146 +1,236 @@
-/* loginModal.css */
+/* responsive-loginModal.css
+   Responsive + accessible improvements for your modal
+*/
 
-/* Modal overlay */
+/* --- Variables --- */
+:root{
+  --overlay: rgba(0,0,0,0.5);
+  --modal-bg: #fff;
+  --accent: #4CAF50;
+  --accent-hover: #45a049;
+  --muted: #555;
+  --radius: 8px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Overlay */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  /* Modal content box */
-  .modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 400px;
-    max-width: 90%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.4s ease-out;
-  }
-  
-  /* Heading style */
-  .modal-content h2 {
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  
-  /* Form styles */
-  .modal-content form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Label styles */
-  .modal-content label {
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #555;
-    font-weight: 500;
-  }
-  
-  /* Input field styles */
-  .modal-content input {
-    padding: 12px;
-    margin-bottom: 16px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    color: #333;
-    transition: border-color 0.3s;
-  }
-  
-  .modal-content input:focus {
-    border-color: #4CAF50;
-    outline: none;
-  }
-  
-  /* Button styles */
-  .modal-content button {
-    padding: 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .modal-content button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Error message style */
-  .error {
-    color: red;
-    text-align: center;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
-  /* Register/Log-in switch link style */
-  .modal-content span {
-    text-align: center;
-    display: block;
-    margin-top: 15px;
-    cursor: pointer;
-    color: #007bff;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  .modal-content span:hover {
-    text-decoration: underline;
-  }
-  
-  /* Close button style */
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background-color: var(--overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 16px;
+  animation: fadeIn 0.28s ease-out;
+}
+
+/* Modal content */
+.modal-content {
+  position: relative;
+  background-color: var(--modal-bg);
+  padding: 28px;
+  border-radius: var(--radius);
+  width: 420px;
+  max-width: 100%;
+  box-shadow: var(--shadow);
+  animation: slideUp 0.36s ease-out;
+  box-sizing: border-box;
+  outline: none; /* allow focus ring on inner elements */
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+/* Close icon/button (positioned top-right) */
+/* If your markup doesn't include a .close-icon element, adding one makes UX better */
+.modal-content .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+.modal-content .close-icon:focus { box-shadow: 0 0 0 3px rgba(76,175,80,0.15); }
+
+/* Heading */
+.modal-content h2 {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  font-size: 1.5rem;
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+
+/* Form layout */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Labels */
+.modal-content label {
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Inputs */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content input,
+.modal-content textarea {
+  padding: 12px 14px;
+  margin: 0; /* gap handled by form gap */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color .18s ease, box-shadow .18s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(76,175,80,0.08);
+  outline: none;
+}
+
+/* Buttons (primary and close) */
+.modal-content .btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* Primary action */
+.modal-content button.primary {
+  padding: 12px 14px;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color .18s ease, transform .08s ease;
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+.modal-content button.primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+.modal-content button.primary:focus { box-shadow: 0 0 0 3px rgba(76,175,80,0.14); outline: none; }
+
+/* Secondary / close button style (if used as a button) */
+.modal-content button.close-btn {
+  background-color: transparent;
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.modal-content button.close-btn:hover {
+  background-color: #f6f6f6;
+  border-color: #ccc;
+}
+
+/* Link-style switch (register / login) */
+.modal-content .switch-link {
+  text-align: center;
+  display: block;
+  margin-top: 12px;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.modal-content .switch-link:hover { text-decoration: underline; }
+
+/* Error message */
+.error {
+  color: #d32f2f;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+/* Small helper: make inputs bigger on touch devices */
+@media (pointer: coarse) {
+  .modal-content input,
+  .modal-content button.primary,
   .modal-content button.close-btn {
-    background-color: transparent;
-    color: #555;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
+    padding: 14px 16px;
+    font-size: 1rem;
   }
-  
-  .modal-content button.close-btn:hover {
-    background-color: #f1f1f1;
-    border-color: #bbb;
+}
+
+/* Mobile: bottom sheet style for better UX on small screens */
+@media (max-width: 520px) {
+  .modal-overlay {
+    align-items: flex-end; /* slide up from bottom */
+    padding: 0;
+    background-color: rgba(0,0,0,0.45);
   }
-  
-  /* Fade and slide animations */
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+
+  .modal-content {
+    width: 100%;
+    border-radius: 12px 12px 0 0; /* top corners rounded, bottom flush with screen */
+    padding: 18px;
+    max-height: 92vh;
+    animation: slideUpMobile 0.36s cubic-bezier(.2,.9,.2,1);
   }
-  
-  @keyframes slideUp {
-    0% {
-      transform: translateY(50px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+
+  .modal-content h2 { font-size: 1.25rem; margin-bottom: 12px; text-align: left; }
+  .modal-content form { gap: 12px; }
+  .modal-content .btn-row { flex-direction: column; }
+  .modal-content button.primary,
+  .modal-content button.close-btn { width: 100%; }
+  .modal-content .close-icon { top: 8px; right: 12px; }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(28px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* softer slide for mobile bottom sheet */
+@keyframes slideUpMobile {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay, .modal-content, .modal-content * {
+    animation: none !important;
+    transition: none !important;
   }
-  
+}
+
+/* Accessibility tips (non-CSS):
+   - Give the overlay role="dialog" aria-modal="true" and set focus to the first focusable element.
+   - Ensure a keyboard-accessible close button (with .close-icon or .close-btn) and trap focus while modal is open.
+*/

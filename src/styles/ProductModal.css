@@ -1,0 +1,94 @@
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  z-index: 3000;
+}
+
+/* Modal box */
+.modal-container {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 1.5rem;
+  border-radius: 14px;
+  position: relative;
+  animation: popIn 0.25s ease;
+  text-align: center;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Image */
+.modal-image {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Text */
+.modal-description {
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.modal-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+/* CTA Button */
+.modal-add-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #FF6B9D, #FFA07A);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 1rem;
+  }
+
+  .modal-image {
+    max-height: 200px;
+  }
+}
+
+/* Smooth Animation */
+@keyframes popIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

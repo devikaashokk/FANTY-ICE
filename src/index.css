@@ -1,76 +1,168 @@
-/* index.css */
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* index.css - cleaned, accessible, and resilient */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
+/* ======================================
+   CSS variables & base settings
+   ====================================== */
+:root{
+  /* typography */
+  --font-sans: Inter, system-ui, Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --base-line-height: 1.5;
+  --base-weight: 400;
+
+  /* colors (light mode defaults; dark is handled below) */
+  --bg: #ffffff;
+  --text: #213547;
+  --muted: #6b7280;
+  --accent: #646cff;
+  --accent-hover: #535bf2;
+  --button-bg: #f9f9f9;
+  --button-text: #111;
+
+  /* layout */
+  --min-width: 320px;
+  --focus-ring: 4px;
+  --radius: 8px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: var(--base-line-height);
+  font-weight: var(--base-weight);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  min-width: var(--min-width);
+  -webkit-font-synthesis: none;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+/* Utility: center whole app when needed (use on a wrapper, not body) */
+.centered-root {
   display: flex;
   place-items: center;
-  min-width: 320px;
+  place-content: center;
   min-height: 100vh;
 }
 
-/* Override global styles for buttons */
+/* Anchor defaults */
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { color: var(--accent-hover); }
+
+/* ======================================
+   Button base styles (accessible)
+   ====================================== */
 button {
-  border-radius: 8px;
+  border-radius: var(--radius);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.2s ease, box-shadow 0.12s ease, transform 0.06s ease;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
 }
 
-button:hover {
-  border-color: #646cff;
-}
+/* Hover & active */
+button:hover { border-color: rgba(100,108,255,0.18); }
+button:active { transform: translateY(1px); }
 
+/* Focus styles: visible and not relying on browser defaults */
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--focus-ring) rgba(100,108,255,0.18);
+  border-radius: calc(var(--radius) + 2px);
 }
 
-/* Override global styles only for cart buttons */
+/* ======================================
+   Cart-specific buttons (no !important)
+   ====================================== */
 button.cart-section-button {
-  background-color: #0077ff !important; /* Force background color */
-  color: white !important;
+  background-color: #0077ff;
+  color: #fff;
+  border-color: rgba(0,0,0,0.05);
 }
 
+/* stronger hover */
 button.cart-section-button:hover {
-  background-color: #0056cc !important; /* Force hover effect */
+  background-color: #0056cc;
+  border-color: rgba(0,0,0,0.08);
 }
 
+/* Disabled state */
+button[disabled],
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ======================================
+   Dark mode / prefers-color-scheme
+   ====================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #242424;
+    --text: rgba(255,255,255,0.87);
+    --muted: #9ca3af;
+    --accent: #646cff;
+    --accent-hover: #747bff;
+    --button-bg: #1a1a1a;
+    --button-text: #fff;
+  }
+
+  /* make sure background applies immediately */
+  html, body { background-color: var(--bg); color: var(--text); }
+
+  a:hover { color: var(--accent-hover); }
+}
+
+/* Optional: explicit override for light scheme (keeps parity with your original) */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --bg: #ffffff;
+    --text: #213547;
+    --button-bg: #f9f9f9;
+    --button-text: #111;
+    --accent-hover: #747bff;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+  html, body { background-color: var(--bg); color: var(--text); }
+}
+
+/* ======================================
+   Small helpers
+   ====================================== */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Responsive text sizing hint (optional) */
+@media (max-width: 480px) {
+  html { font-size: 15px; }
 }

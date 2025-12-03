@@ -1,34 +1,114 @@
+/* responsive-product-item.css
+   Responsive adjustments for .product-item, images and info
+*/
+
+/* Parent grid container — add this if not already present */
+.product-list {
+  display: grid;
+  gap: 20px;
+  /* Default (desktop): 3 columns */
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+/* Product card */
 .product-item {
   text-align: center;
-  width: calc(33.333% - 40px); /* Adjust width to fit 3 items in a row */
-  flex: 0 0 auto; /* Ensure items don't shrink or grow */
-  box-sizing: border-box; /* Include padding and border in width calculation */
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  width: 100%;              /* rely on grid column width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform .22s ease, box-shadow .22s ease;
 }
 
+/* Hover lift */
+.product-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Image: center and scale nicely */
 .product-item img {
-  width: 80%; /* Reduced width */
-  max-width: 150px; /* Set a max-width for better responsiveness */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 10px; /* Add rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 180px;    /* allow a slightly larger max for better quality */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: block;
+  margin: 0 auto 14px;
+  object-fit: cover;
 }
 
+/* Product info block */
 .product-info {
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .product-info h3 {
-  margin: 10px 0;
-  font-size: 1.2em;
-  color: hsl(0, 0%, 1%);
+  margin: 10px 0 6px;
+  font-size: 1.15rem;
+  color: hsl(0, 0%, 5%); /* slightly darker than pure black for readability */
+  line-height: 1.2;
 }
 
 .product-info p {
   margin: 5px 0;
   color: #0a0a0a;
+  font-size: .95rem;
 }
 
+/* Price / CTA tweaks (optional utility classes) */
+.product-info .price {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #e91e63;
+}
+
+/* Responsive breakpoints */
+/* Wide screens keep 3 columns */
+@media (min-width: 1200px) {
+  .product-list { grid-template-columns: repeat(3, 1fr); }
+  .product-item img { max-width: 200px; }
+}
+
+/* Medium screens -> 2 columns */
+@media (max-width: 1199px) and (min-width: 700px) {
+  .product-list { grid-template-columns: repeat(2, 1fr); }
+  .product-item { padding: 18px; }
+  .product-item img { max-width: 170px; }
+}
+
+/* Small screens -> 1 column */
+@media (max-width: 699px) {
+  .product-list { grid-template-columns: 1fr; gap: 14px; padding: 0 8px; }
+  .product-item {
+    padding: 14px;
+    border-radius: 8px;
+    text-align: left; /* optional: left-align on small screens for readability */
+  }
+  .product-item img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    margin-bottom: 12px;
+  }
+  .product-info h3 { font-size: 1rem; }
+  .product-info p  { font-size: .95rem; }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .product-item { transition: none; transform: none; }
+}

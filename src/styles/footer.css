@@ -1,75 +1,189 @@
-/* Footer Styles */
+/* Modern Footer Styles */
 .footer {
-    display: none; /* Initially hidden */
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 20px;
-    background-color: #0e0d0d;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #ffffff;
+  padding: 3rem 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: start;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+/* Footer Sections */
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-left {
+  justify-content: flex-start;
+}
+
+.footer-center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-right {
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* Footer Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #667eea;
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* Footer Center - Brand */
+.colored-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+/* Footer Right - Contact Info */
+.footer-right p {
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.footer-right a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+/* Copyright Section */
+.footer-bottom {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 2.5rem 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 2rem 5%;
+    text-align: center;
   }
   
-  .footer-left {
-    display: flex;
-    justify-content: flex-start;
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-right {
     align-items: center;
   }
   
   .footer-links {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-links li {
-    margin: 0 10px; /* Horizontal spacing between list items */
-  }
-  
-  .footer-links a {
-    color: #f0eaea;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
+    align-items: center;
   }
   
   .footer-links a:hover {
-    color: #f4a261;
+    transform: translateX(0);
+    transform: scale(1.05);
   }
   
-  .footer-center {
-    text-align: left; /* Align text to the left */
-    position: absolute;
-    left: 49%;
-    transform: translateX(-50%); /* Center it based on the new position */
-  }
-  
-  .footer-center .colored-text {
-    color: hsl(60, 3%, 92%); /* Add your desired color */
+  .colored-text {
     font-size: 1.5rem;
-    margin: 0;
+    margin: 1rem 0;
   }
   
-  .footer-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Align items to the right */
-    margin-right: 20px; /* Move slightly to the left */
+  .footer-bottom {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 4%;
   }
   
+  .colored-text {
+    font-size: 1.3rem;
+  }
+  
+  .footer-links a,
   .footer-right p {
-    margin: 5px 0;
+    font-size: 0.875rem;
   }
-  
-  .footer-right a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .footer-right a:hover {
-    text-decoration: underline;
-  }
-  
+}

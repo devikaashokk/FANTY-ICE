@@ -1,22 +1,45 @@
+/* Star Rating Wrapper */
 .star-rating {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px; /* Even spacing between stars */
+  margin-top: 20px;
+  touch-action: manipulation; /* smoother tapping on mobile */
+}
+
+/* Base Star */
+.star {
+  font-size: 2rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.25s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+/* Filled (active) star */
+.star.filled {
+  color: #ffcc00;
+}
+
+/* Hover effect */
+.star:hover {
+  color: #ffcc00;
+  transform: scale(1.1); /* subtle lift effect */
+}
+
+/* Hover effect should not break when moving across stars */
+.star-rating:hover .star {
+  color: #ddd;
+}
+.star-rating:hover .star:hover,
+.star-rating:hover .star:hover ~ .star {
+  color: #ffcc00;
+}
+
+/* Touch device optimization */
+@media (max-width: 600px) {
   .star {
-    font-size: 2em;
-    color: #ddd;
-    cursor: pointer;
-    transition: color 0.3s;
+    font-size: 1.7rem; /* slightly smaller for mobile comfort */
   }
-  
-  .star.filled {
-    color: #ffcc00;
-  }
-  
-  .star:hover {
-    color: #ffcc00;
-  }
-  
+}

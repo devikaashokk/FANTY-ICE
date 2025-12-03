@@ -1,140 +1,140 @@
-/* Pop-Up Animation Keyframes */
-@keyframes pop-up {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* responsive-products.css
+   Responsive version of your popup/hero/products styles
+   Keeps original desktop/web appearance while adapting to smaller screens
+*/
+
+/* --- Variables --- */
+:root{
+  --bg-page: #eef2f6;
+  --section-bg: #f9f9f9;
+  --card-bg: #f7f7f7;
+  --muted: #333;
+  --muted-2: #888;
+  --accent-purple: #6a1b9a;
+  --price: #e91e63;
+  --radius: 10px;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 15px rgba(0,0,0,0.15);
+  --container-max: 1300px;
 }
 
-/* Page Container */
+/* --- Pop-up animation --- */
+@keyframes pop-up {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* --- Base layout --- */
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; font-family: 'Arial', system-ui, -apple-system, "Segoe UI", Roboto, 'Poppins', sans-serif; color: var(--muted); background: var(--bg-page); }
+
+/* Page container centers content and gives padding */
 .page-container {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Full viewport height */
-  background-color: #eef2f6; /* Subtle blue-gray for a professional feel */
-  text-align: center;
-  padding: 20px;
+  align-items: flex-start;
+  min-height: 100vh;
   width: 100%;
-  box-sizing: border-box;
-  margin: 0;
+  padding: 32px 20px;
+  margin: 0 auto;
+  text-align: center;
 }
 
+/* Constrain wide layouts */
+.page-container .container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* --- Hero / background image --- */
+/* Place behind content, full-bleed; uses object-fit to preserve aspect ratio */
 .hero-image {
-  width: 100vw; /* Full screen width */
-  height: 100vh; /* Full screen height */
+  position: fixed;      /* fixed so it stays put while scrolling */
+  inset: 0;             /* shorthand for top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100vh;
   object-fit: cover;
   object-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  filter: brightness(85%); /* Slight dim effect for text visibility */
+  z-index: -1;          /* behind main content */
+  filter: brightness(0.85);
+  pointer-events: none; /* don't capture clicks */
 }
 
-/* Products Section */
+/* If you prefer the hero not to be fixed on small screens, switch to absolute and smaller height via media queries */
+
+/* --- Products Section --- */
 .products-section {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f9f9;
-  transition: transform 0.5s, opacity 0.5s;
+  width: 100%;
+  padding: 48px 20px;
+  background-color: var(--section-bg);
+  border-radius: 12px;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  box-shadow: none;
+  margin-bottom: 28px;
 }
 
+/* Title */
 .products-section h2 {
-  margin-bottom: 30px;
-  color: #6a1b9a; /* Professional purple */
+  margin: 0 0 24px;
+  color: var(--accent-purple);
+  font-size: clamp(1.6rem, 2.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.05;
   font-family: 'Arial', sans-serif;
-  font-size: 2.5em;
-  font-weight: bold;
 }
 
+/* --- Product grid --- */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 columns for the products */
   gap: 20px;
-  padding: 20px;
   justify-items: center;
+  align-items: start;
+  padding: 12px;
+  /* default wide: 6 columns */
+  grid-template-columns: repeat(6, 1fr);
 }
 
-/* Product Item Styling */
+/* Product item card */
 .product-item {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 18px;
+  width: 100%;
+  max-width: 220px; /* desktop card width */
   text-align: center;
-  background-color: #f7f7f7; /* Light background for cards */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%; /* Ensure the card takes full column width */
-  max-width: 200px; /* Limit the maximum width for better appearance */
-  margin: auto; /* Center align */
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  margin: 0 auto;
 }
 
-/* Hover Effects for Product Item */
+/* Card hover */
 .product-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Product Image Styling */
+/* Image inside card */
 .product-item img {
-  width: 100%; /* Make image take up full width of its container */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 200px; /* Increase max height for better image appearance */
-  margin-bottom: 15px; /* Space between image and text */
-  border-radius: 8px; /* Rounded corners */
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: block;
+  max-height: 220px;
 }
 
-/* Product Info Styling */
-.product-info {
-  padding: 10px;
-}
+/* Info */
+.product-info { padding: 6px 0 0; }
+.product-info h3 { font-size: 1.05rem; margin: 8px 0; color: var(--muted); }
+.product-info p { font-size: 0.95rem; color: var(--muted-2); margin: 6px 0; }
+.product-info .price { font-size: 1.1rem; font-weight: 700; color: var(--price); margin-top: 8px; }
 
-.product-info h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333;
-}
-
-.product-info p {
-  font-size: 1rem;
-  color: #888;
-}
-
-.product-info .price {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #e91e63; /* Optional: Distinct color for price */
-}
-
-/* Responsive Styling */
-@media screen and (max-width: 1200px) {
-  .product-list {
-    grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns for smaller screens */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .product-list {
-    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for smaller screens */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .product-list {
-    grid-template-columns: repeat(1, 1fr); /* Full-width for very small screens */
-  }
-}
-
-.logo {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #6a1b9a; /* Professional purple for branding */
-}
-
+/* --- Navigation / header bits --- */
+.logo { font-size: 1.8rem; font-weight: 700; color: var(--accent-purple); }
 .nav-list {
   list-style: none;
   display: flex;
@@ -143,16 +143,80 @@
   padding: 0;
   align-items: center;
 }
-
 .nav-link {
-  color: #333;
+  color: var(--muted);
   text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color .22s, color .22s;
+}
+.nav-link:hover { background-color: #f3f3f3; color: #000; }
+
+/* --- Animation utility (for pop-in cards) --- */
+.animate-pop {
+  animation: pop-up .28s cubic-bezier(.2,.9,.2,1) both;
 }
 
-.nav-link:hover {
-  background-color: #f3f3f3;
-  color: #000;
+/* --- Responsive breakpoints --- */
+/* Very wide: keep 6 columns */
+@media (min-width: 1400px) {
+  .product-list { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Desktop / large laptop: 5 cols */
+@media (max-width: 1399px) and (min-width: 1100px) {
+  .product-list { grid-template-columns: repeat(5, 1fr); }
+  .product-item { max-width: 200px; }
+}
+
+/* Medium laptop / 4 cols */
+@media (max-width: 1099px) and (min-width: 900px) {
+  .product-list { grid-template-columns: repeat(4, 1fr); }
+  .product-item { max-width: 200px; }
+  .product-item img { height: 150px; }
+}
+
+/* Tablet: 3 cols */
+@media (max-width: 899px) and (min-width: 620px) {
+  .product-list { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .products-section { padding: 36px 18px; }
+  .product-item { max-width: 260px; padding: 16px; }
+  .product-item img { height: 150px; }
+  .hero-image { /* reduce visual weight on tablets */
+    filter: brightness(0.9);
+    object-position: center top;
+  }
+}
+
+/* Small tablet / large phone: 2 cols, more compact */
+@media (max-width: 619px) and (min-width: 420px) {
+  .product-list { grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 8px; }
+  .product-item { max-width: 92%; padding: 14px; }
+  .product-item img { height: 150px; max-height: 200px; }
+  .products-section { padding: 28px 12px; border-radius: 10px; }
+  .page-container { padding: 20px 12px; }
+  .nav-list { gap: 12px; }
+}
+
+/* Phones: single column, full width */
+@media (max-width: 419px) {
+  .product-list { grid-template-columns: 1fr; gap: 12px; padding: 6px; }
+  .products-section { padding: 18px 10px; }
+  .product-item { max-width: 100%; padding: 12px; border-radius: 8px; }
+  .product-item img { height: 180px; } /* taller images on very small screens keep cards attractive */
+  .products-section h2 { font-size: 1.4rem; margin-bottom: 12px; }
+  .logo { font-size: 1.4rem; }
+  .nav-list { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  /* On narrow screens the fixed hero can be heavy; make it less prominent */
+  .hero-image { position: absolute; height: 60vh; object-position: center top; filter: brightness(0.9); z-index: -1; }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop, .product-item, .products-section { animation: none; transition: none; transform: none; }
+}
+
+/* Small utility to visually hide background image for print */
+@media print {
+  .hero-image { display: none; }
 }

@@ -1,210 +1,207 @@
-z
-/* Profile Page Background */
-.profile-page {
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Keep the background fixed during scrolling */
-  background-repeat: no-repeat; /* Prevent repeating */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-  padding: 20px;
-  font-family: 'Poppins', sans-serif; /* Modern typography */
+/* ========== Profile Page (Responsive & Robust) ========== */
+:root{
+  --max-width: 980px;
+  --card-radius: 18px;
+  --accent-border: #b6b9be;
+  --accent-btn: #2575fc;
+  --accent-save: #28a745;
+  --text: #1a1b1b;
+  --card-bg: rgba(255,255,255,0.94);
 }
 
-/* Profile Header */
+/* Page wrapper */
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh; /* allow page to grow */
+  padding: 28px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+/* Avoid using background-attachment: fixed for mobile — if you need parallax, handle via JS */
+.profile-page.no-fixed-bg {
+  /* helper class if you want special behavior; default keeps it unset */
+}
+
+/* Header */
 .profile-header {
-  text-align: center; /* Center the header text */
-  margin-bottom: 40px;
   width: 100%;
+  max-width: var(--max-width);
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 0 12px;
 }
 
 .profile-header h1 {
-  font-size: 4rem; /* Prominent heading size */
-  font-weight: bold;
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  font-weight: 800;
   margin: 0;
   color: #312b2b;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.28);
+  line-height: 1.02;
 }
 
-/* Profile Card */
+/* Card */
 .profile-card {
+  width: 100%;
+  max-width: 680px;
+  background-color: var(--card-bg);
+  color: #000;
+  padding: 32px;               /* reasonable default padding */
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-  color: #000; /* Set profile text color to black */
-  padding: 90px; /* Spacious padding */
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Depth with shadow */
-  max-width: 600px; /* Restrict card width */
-  width: 100%;
-  animation: fadeInRight 1s ease-in-out; /* Smooth entrance animation */
-  text-align: center; /* Center the card content */
+  gap: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  animation: fadeInRight 800ms ease-out;
 }
 
-/* Profile Image */
+/* Profile image */
 .profile-image img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  margin-bottom: 20px;
-  border: 5px solid #b6b9be; /* Accent border */
-  transition: transform 0.3s ease-in-out;
+  object-fit: cover;
+  margin: 0 auto 6px;
+  border: 5px solid var(--accent-border);
+  transition: transform 220ms ease;
+  display: block;
 }
 
 .profile-image img:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
+  transform: scale(1.06);
 }
 
-/* Profile Info */
+/* Info */
 .profile-info {
   width: 100%;
 }
 
 .profile-info h2 {
-  font-size: 2.5rem; /* Prominent name size */
-  text-align: center;
-  margin-bottom: 15px; /* Space between elements */
-  font-weight: bold;
-  color: #1a1b1b; /* Primary color */
+  font-size: clamp(1.25rem, 3.2vw, 2rem);
+  margin: 6px 0 8px;
+  font-weight: 800;
+  color: var(--text);
 }
 
 .profile-info p {
-  font-size: 1.3rem;
-  margin: 8px 0;
-  text-align: center;
-  color: #000; /* Set text color to black */
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  margin: 4px 0;
+  color: #222;
 }
 
-/* Editable Fields */
+/* Form / editable fields */
 .profile-field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  width: 100%; /* Ensure fields span the full card width */
+  margin-bottom: 12px;
+  width: 100%;
 }
 
 .profile-field label {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 0.98rem;
+  margin-bottom: 6px;
   color: #444;
+  text-align: left;
 }
 
-.profile-field input {
-  padding: 12px;
-  font-size: 1.1rem;
+.profile-field input,
+.profile-field textarea {
+  padding: 10px 12px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.profile-field input:focus {
+.profile-field input:focus,
+.profile-field textarea:focus {
   border-color: #2575fc;
+  box-shadow: 0 6px 20px rgba(37,117,252,0.06);
 }
 
-/* Buttons */
-/* Buttons */
-.edit-button {
-  background-color: #2575fc; /* Edit state color */
-  color: #fff;
-  border: none;
-  padding: 15px 25px;
-  margin-top: 25px;
-  cursor: pointer;
-  border-radius: 10px;
-  font-size: 1.1rem;
+/* Action buttons container (keeps buttons stacked on mobile and side-by-side on desktop) */
+.profile-actions {
+  display: flex;
+  gap: 12px;
   width: 100%;
-  text-transform: uppercase;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  justify-content: stretch;
+  flex-wrap: wrap;
 }
 
-.edit-button:hover {
-  background-color: #1b5fcf; /* Hover color for edit */
-  transform: translateY(-2px); /* Button lift effect */
-}
-
+/* Buttons */
+.edit-button,
 .save-button {
-  background-color: #28a745; /* Save state color */
-  color: #fff;
+  flex: 1 1 auto;
+  padding: 12px 18px;
   border: none;
-  padding: 15px 25px;
-  margin-top: 25px;
   cursor: pointer;
   border-radius: 10px;
-  font-size: 1.1rem;
-  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform 0.14s ease, background-color 0.14s ease;
   text-transform: uppercase;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.save-button:hover {
-  background-color: #218838; /* Hover color for save */
-  transform: translateY(-2px); /* Button lift effect */
-}
+/* Distinct colors */
+.edit-button { background-color: var(--accent-btn); color: #fff; }
+.edit-button:hover { background-color: #1b5fcf; transform: translateY(-3px); }
 
+.save-button { background-color: var(--accent-save); color: #fff; }
+.save-button:hover { background-color: #218838; transform: translateY(-3px); }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .profile-page {
-    padding: 20px; /* Reduce padding for smaller screens */
-    align-items: center; /* Center-align content on smaller screens */
-  }
-
-  .profile-header {
-    text-align: center; /* Center header on smaller screens */
-  }
-
-  .profile-header h1 {
-    font-size: 3rem; /* Adjust heading size for smaller screens */
-  }
-
-  .profile-card {
-    padding: 30px; /* Compact padding */
-  }
-
-  .profile-info h2 {
-    font-size: 2rem;
-  }
-
-  .profile-info p {
-    font-size: 1.1rem;
-  }
-}
-
-/* Animation for Profile Card Entrance */
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-/* Footer Styles for Profile Page */
+/* Footer on profile: avoid fixed overlapping — provide a non-fixed default and helper class if fixed needed */
 .profile-page-footer {
-  width: 100%; /* Full width */
-  background-color: #2575fc; /* Background color */
-  color: #fff; /* Text color */
-  text-align: center; /* Center-align text */
-  padding: 20px 0; /* Padding */
-  position: fixed; /* Fixed at the bottom */
-  bottom: 0;
-  left: 0;
-  z-index: 1000; /* Ensure the footer is on top */
+  width: 100%;
+  background-color: var(--accent-btn);
+  color: #fff;
+  text-align: center;
+  padding: 16px 12px;
+  margin-top: 24px;
+  border-radius: 8px;
 }
 
-/* Responsive Design for Profile Page Footer */
-@media (max-width: 768px) {
-  .profile-page-footer {
-    padding: 15px 0; /* Adjust padding for smaller screens */
-  }
+/* If you do need a fixed footer, add a helper class and ensure body/content reserves space */
+.profile-page-footer.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1100;
+}
+
+/* Accessibility & small tweaks */
+.profile-card [role="status"] { font-weight: 600; color: #1a7f3a; }
+
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+  .profile-card { padding: 24px; max-width: 620px; }
+  .profile-image img { width: 120px; height: 120px; }
+}
+
+@media (max-width: 600px) {
+  .profile-page { padding: 18px; }
+  .profile-card { padding: 18px; border-radius: 12px; }
+  .profile-image img { width: 100px; height: 100px; }
+  .profile-actions { flex-direction: column; }
+  .profile-header h1 { font-size: 1.8rem; text-wrap: balance; }
+}
+
+/* Entrance animation */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20%); }
+  to   { opacity: 1; transform: translateX(0); }
 }

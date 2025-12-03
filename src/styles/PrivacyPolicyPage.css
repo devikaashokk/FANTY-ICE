@@ -1,39 +1,104 @@
+/* ===========================
+   Privacy Policy Page (Responsive)
+   =========================== */
+
 .privacy-policy-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    height: 100vh; /* Full viewport height */
-    width: 100%; /* Full width of the viewport */
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in width/height */
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    line-height: 1.6;
-    background-color: #f9f9f946; /* Light transparent background */
-    margin: 0; /* Reset margin */
-    transform: translateX(150px); /* Slightly move the content to the right */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  min-height: 100vh;             /* Use min-height so content can grow */
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.65;
+  background-color: #f9f9f946;
+  text-align: center;
+  margin: 0;
+  transform: translateX(150px);  /* Desktop shift */
+}
+
+/* Title */
+.privacy-policy-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+/* Paragraphs */
+.privacy-policy-intro,
+.privacy-policy-text {
+  font-size: 16px;
+  color: #555;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+/* Section wrapper */
+.privacy-policy-section {
+  margin-top: 20px;
+  max-width: 800px;
+}
+
+/* Subtitles */
+.privacy-policy-subtitle {
+  font-size: 28px;
+  color: #2a4d8f;
+  margin-bottom: 12px;
+}
+
+/* ===========================
+   RESPONSIVE BREAKPOINTS
+   =========================== */
+
+/* Tablet adjustments */
+@media (max-width: 992px) {
+  .privacy-policy-page {
+    transform: translateX(60px);  /* Reduce right shift */
+    padding: 20px 15px;
   }
-  
+
   .privacy-policy-title {
-    font-size: 36px;
-    color: #111111;
-    margin-bottom: 20px;
+    font-size: 30px;
   }
-  
+
+  .privacy-policy-subtitle {
+    font-size: 24px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+  .privacy-policy-page {
+    transform: translateX(0);     /* REMOVE the forced shift on mobile */
+    text-align: left;             /* Better readability */
+    align-items: flex-start;      /* Natural mobile layout */
+    padding: 20px;
+  }
+
+  .privacy-policy-title {
+    font-size: 26px;
+    text-align: left;
+  }
+
   .privacy-policy-intro,
   .privacy-policy-text {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
+    font-size: 15px;
   }
-  
-  .privacy-policy-section {
-    margin-top: 20px;
-  }
-  
+
   .privacy-policy-subtitle {
-    font-size: 28px;
-    color: #2a4d8f;
+    font-size: 22px;
   }
-  
+}
+
+/* Tiny phones */
+@media (max-width: 400px) {
+  .privacy-policy-title {
+    font-size: 22px;
+  }
+  .privacy-policy-subtitle {
+    font-size: 20px;
+  }
+}

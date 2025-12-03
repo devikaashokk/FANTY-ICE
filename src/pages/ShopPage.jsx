@@ -17,6 +17,7 @@ import lemonImage from '../assets/lemon.jpeg';
 import peachImage from '../assets/peach.jpeg';
 import cherryImage from '../assets/cherry.jpeg';
 import kiwiImage from '../assets/kiwi.jpeg';
+import ProductModal from "../components/ProductModal";
 
 const products = [
   { id: 1, name: 'Mango Ice Candy', description: 'Delicious mango ice treat', price: 5.99, image: mangoImage },
@@ -40,6 +41,13 @@ function ShopPage() {
   const [notification, setNotification] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const handleViewDetails = (product) => {
+    setSelectedProduct(product);
+    setIsDetailModalOpen(true);
+  };
+
 
   const isProductInCart = (productId) => {
     return (cart || []).some((item) => item.id === productId);
@@ -106,6 +114,13 @@ function ShopPage() {
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>${product.price.toFixed(2)}</p>
+              <button
+                onClick={() => handleViewDetails(product)}
+                className="view-details-button"
+              >
+                View Details
+              </button>
+
               {isProductInCart(product.id) ? (
                 <button onClick={() => navigate('/cart')} className="view-cart-button">
                   View Cart
@@ -119,9 +134,7 @@ function ShopPage() {
                   {loading ? 'Adding...' : 'Add to Cart'}
                 </button>
               )}
-              <button onClick={() => navigate(`/product/${product.id}`)} className="view-details-button">
-                View Details
-              </button>
+
             </div>
           </div>
         ))}
@@ -134,6 +147,11 @@ function ShopPage() {
       )}
 
       <LoginModal isVisible={isModalVisible} onClose={() => setIsModalVisible(false)} />
+      <ProductModal
+        isOpen={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        product={selectedProduct}
+      />
     </div>
   );
 }
